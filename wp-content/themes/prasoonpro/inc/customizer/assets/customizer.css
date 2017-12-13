@@ -1,0 +1,16 @@
+.accordion-section-content li.customize-control{
+	margin-bottom: 50px;
+}
+
+.accordion-sub-container li.customize-control{
+	margin-bottom : 10px !important;
+}
+
+.accordion-section-content li.widget-rendered{
+	margin-bottom: 10px;
+}
+
+input[type="textbox"], select{
+	width: 100%;
+}
+
