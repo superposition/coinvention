@@ -272,18 +272,18 @@ class Prasoon_About_Style2_Section_Widget extends WP_Widget {
 	 */
 	public function update( $new_instance, $old_instance ) {
 		$instance = $old_instance;
-        $instance['heading'] = wp_filter_post_kses($new_instance['heading']);
-        $instance['subheading'] = wp_filter_post_kses($new_instance['subheading']);
-		$instance['content'] = wp_filter_post_kses($new_instance['content']);  
+        $instance['heading'] = wp_kses_post($new_instance['heading']);
+        $instance['subheading'] = wp_kses_post($new_instance['subheading']);
+		$instance['content'] = wp_kses_post($new_instance['content']);  
         $instance['image']  = strip_tags( $new_instance['image'] );
-        $instance['skillsheading']   = wp_filter_post_kses($new_instance['skillsheading']);
+        $instance['skillsheading']   = wp_kses_post($new_instance['skillsheading']);
         $instance['number'] = absint($new_instance['number']);
         $instance['skillcolor'] = sanitize_hex_color($new_instance['skillcolor']);
         $instance['color'] = sanitize_hex_color($new_instance['color']);
 
         for( $i=1; $i<= $instance['number']; $i++ ) {          
-            $instance['skillname'.$i] = wp_filter_post_kses($new_instance['skillname'.$i]);
-            $instance['skillvalue'.$i] = wp_filter_post_kses($new_instance['skillvalue'.$i]);
+            $instance['skillname'.$i] = wp_kses_post($new_instance['skillname'.$i]);
+            $instance['skillvalue'.$i] = wp_kses_post($new_instance['skillvalue'.$i]);
         }
 
         $instance['headingcolor'] = sanitize_hex_color($new_instance['headingcolor']);

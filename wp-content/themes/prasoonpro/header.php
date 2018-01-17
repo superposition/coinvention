@@ -131,13 +131,14 @@
 			          		/* show parallax */
 			          			?>
 			          				<div class="cover-home" data-parallax="scroll" data-image-src="<?php echo esc_url(get_theme_mod( 'theme_home_bg',get_template_directory_uri().'/img/starter-bg.jpg' )); ?>">
-			            				<div cl			            		<?php
+			            				<div class="cover-home-overlay"></div> 
+			            		<?php
 			        		}
 			        		else{
 			          			/* do not show parallax */
 			          			?>
 			          				<div class="cover-home" style="background:url('<?php echo esc_url(get_theme_mod( 'theme_home_bg' )); ?>') no-repeat;">
-			            				 
+			            				<div class="cover-home-overlay"></div> 
 			            		<?php
 			        		}
 

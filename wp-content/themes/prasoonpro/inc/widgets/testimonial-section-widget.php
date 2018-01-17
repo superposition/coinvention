@@ -219,9 +219,9 @@ class Prasoon_Testimonial_Section_Widget extends WP_Widget {
 
     	for( $i=1; $i<= $instance['number']; $i++ ) {          
             $instance['cimage'.$i] = strip_tags($new_instance['cimage'.$i]);
-            $instance['cname'.$i] = wp_filter_post_kses($new_instance['cname'.$i]);
-            $instance['cdesg'.$i] = wp_filter_post_kses($new_instance['cdesg'.$i]);
-            $instance['cmessage'.$i] = wp_filter_post_kses($new_instance['cmessage'.$i]);
+            $instance['cname'.$i] = wp_kses_post($new_instance['cname'.$i]);
+            $instance['cdesg'.$i] = wp_kses_post($new_instance['cdesg'.$i]);
+            $instance['cmessage'.$i] = wp_kses_post($new_instance['cmessage'.$i]);
         }
 
     	return $instance;

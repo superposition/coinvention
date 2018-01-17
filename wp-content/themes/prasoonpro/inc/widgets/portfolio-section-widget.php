@@ -269,17 +269,17 @@ class Prasoon_Portfolio_Section_Widget extends WP_Widget {
      */
     public function update( $new_instance, $old_instance ) {
         $instance = $old_instance;
-        $instance['heading'] = wp_filter_post_kses($new_instance['heading']);
-        $instance['subheading'] = wp_filter_post_kses($new_instance['subheading']);     
+        $instance['heading'] = wp_kses_post($new_instance['heading']);
+        $instance['subheading'] = wp_kses_post($new_instance['subheading']);     
         $instance['number']   = absint($new_instance['number']);
         $instance['color'] = sanitize_hex_color($new_instance['color']);
 
         for( $i=1; $i<=$instance['number']; $i++ ) { 
             $instance['imagethumb'.$i]  = strip_tags( $new_instance['imagethumb'.$i] );         
             $instance['image'.$i]  = strip_tags( $new_instance['image'.$i] );         
-            $instance['prjheading'.$i] = wp_filter_post_kses($new_instance['prjheading'.$i]);
-            $instance['prjdescr'.$i] = wp_filter_post_kses($new_instance['prjdescr'.$i]);
-            $instance['prjcat'.$i] = wp_filter_post_kses($new_instance['prjcat'.$i]);
+            $instance['prjheading'.$i] = wp_kses_post($new_instance['prjheading'.$i]);
+            $instance['prjdescr'.$i] = wp_kses_post($new_instance['prjdescr'.$i]);
+            $instance['prjcat'.$i] = wp_kses_post($new_instance['prjcat'.$i]);
         }
 
         $instance['headingcolor'] = sanitize_hex_color($new_instance['headingcolor']);

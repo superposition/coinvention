@@ -206,13 +206,13 @@ class Prasoon_Counters_Section_Widget extends WP_Widget {
 	public function update( $new_instance, $old_instance ) {
 		$instance = $old_instance;
 
-		$instance[ 'name1'] = wp_filter_post_kses( $new_instance['name1'] );
+		$instance[ 'name1'] = wp_kses_post( $new_instance['name1'] );
         $instance[ 'value1'] = absint( $new_instance['value1'] );
-        $instance[ 'name2'] = wp_filter_post_kses( $new_instance['name2'] );
+        $instance[ 'name2'] = wp_kses_post( $new_instance['name2'] );
         $instance[ 'value2'] = absint( $new_instance['value2'] );
-        $instance[ 'name3'] = wp_filter_post_kses( $new_instance['name3'] );
+        $instance[ 'name3'] = wp_kses_post( $new_instance['name3'] );
         $instance[ 'value3'] = absint( $new_instance['value3'] );
-        $instance[ 'name4'] = wp_filter_post_kses( $new_instance['name4'] );
+        $instance[ 'name4'] = wp_kses_post( $new_instance['name4'] );
         $instance[ 'value4'] = absint( $new_instance['value4'] );        
 		$instance['image']  = strip_tags( $new_instance['image'] );    	
     	$instance['radio_buttons'] = wp_filter_post_kses($new_instance['radio_buttons']);

@@ -207,11 +207,11 @@ class Prasoon_Slider_Section_Widget extends WP_Widget {
 	    for( $i=1; $i<=$instance[ 'number']; $i++ ) {			
 	    	
 	    	$instance[ 'image'.$i ] = strip_tags( $new_instance['image'.$i] );
-			$instance[ 'heading'.$i ] = wp_filter_post_kses($new_instance['heading'.$i]);
-		    $instance[ 'subheading'.$i ] = wp_filter_post_kses($new_instance['subheading'.$i]);
-		    $instance[ 'button1'.$i ] = wp_filter_post_kses($new_instance['button1'.$i]);
+			$instance[ 'heading'.$i ] = wp_kses_post($new_instance['heading'.$i]);
+		    $instance[ 'subheading'.$i ] = wp_kses_post($new_instance['subheading'.$i]);
+		    $instance[ 'button1'.$i ] = wp_kses_post($new_instance['button1'.$i]);
 		    $instance[ 'button1url'.$i ] = esc_url($new_instance['button1url'.$i]);
-		    $instance[ 'button2'.$i ] = wp_filter_post_kses($new_instance['button2'.$i]);
+		    $instance[ 'button2'.$i ] = wp_kses_post($new_instance['button2'.$i]);
 		    $instance[ 'button2url'.$i ] = esc_url($new_instance['button2url'.$i]);
 		}
 

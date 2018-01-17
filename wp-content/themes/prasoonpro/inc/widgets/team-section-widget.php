@@ -290,16 +290,16 @@ class Prasoon_Team_Section_Widget extends WP_Widget {
 	 */
 	public function update( $new_instance, $old_instance ) {
 		$instance = $old_instance;
-        $instance['heading'] = wp_filter_post_kses($new_instance['heading']);
-        $instance['subheading'] = wp_filter_post_kses($new_instance['subheading']);		
+        $instance['heading'] = wp_kses_post($new_instance['heading']);
+        $instance['subheading'] = wp_kses_post($new_instance['subheading']);		
         $instance['number']   = absint($new_instance['number']);
         $instance['color'] = sanitize_hex_color($new_instance['color']);
 
         for( $i=1; $i<=$instance['number']; $i++ ) { 
             $instance['image'.$i]  = strip_tags( $new_instance['image'.$i] );         
-            $instance['name'.$i] = wp_filter_post_kses($new_instance['name'.$i]);
-            $instance['descr'.$i] = wp_filter_post_kses($new_instance['descr'.$i]);
-            $instance['desg'.$i] = wp_filter_post_kses($new_instance['desg'.$i]);
+            $instance['name'.$i] = wp_kses_post($new_instance['name'.$i]);
+            $instance['descr'.$i] = wp_kses_post($new_instance['descr'.$i]);
+            $instance['desg'.$i] = wp_kses_post($new_instance['desg'.$i]);
             $instance['icon1'.$i] = wp_filter_post_kses($new_instance['icon1'.$i]);
             $instance['icon1url'.$i] = esc_url($new_instance['icon1url'.$i]);
             $instance['icon2'.$i] = wp_filter_post_kses($new_instance['icon2'.$i]);

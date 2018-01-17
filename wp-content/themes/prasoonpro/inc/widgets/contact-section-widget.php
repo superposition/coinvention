@@ -329,11 +329,11 @@ class Prasoon_Contact_Section_Widget extends WP_Widget {
 	public function update( $new_instance, $old_instance ) {
 		$instance = $old_instance;
 
-        $instance['heading'] = wp_filter_post_kses($new_instance['heading']);
-        $instance['subheading'] = wp_filter_post_kses($new_instance['subheading']);
-        $instance['address'] = wp_filter_post_kses($new_instance['address']);
-        $instance['email'] = wp_filter_post_kses($new_instance['email']);
-        $instance['phone'] = wp_filter_post_kses($new_instance['phone']);
+        $instance['heading'] = wp_kses_post($new_instance['heading']);
+        $instance['subheading'] = wp_kses_post($new_instance['subheading']);
+        $instance['address'] = wp_kses_post($new_instance['address']);
+        $instance['email'] = wp_kses_post($new_instance['email']);
+        $instance['phone'] = wp_kses_post($new_instance['phone']);
 
         $instance['contactform'] = strip_tags($new_instance['contactform']);
         $instance['number']   = absint($new_instance['number']);      
@@ -346,7 +346,7 @@ class Prasoon_Contact_Section_Widget extends WP_Widget {
         $instance['iconcolor'] = sanitize_hex_color($new_instance['iconcolor']);
 
         for( $i=1; $i <= $instance['number']; $i++ ) { 
-            $instance['icon'.$i]  = wp_filter_post_kses( $new_instance['icon'.$i] );
+            $instance['icon'.$i]  = wp_kses_post( $new_instance['icon'.$i] );
             $instance['iconurl'.$i]  = esc_url($new_instance['iconurl'.$i]);
         }
 

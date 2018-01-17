@@ -236,13 +236,13 @@ class Prasoon_About_Section_Widget extends WP_Widget {
 	 */
 	public function update( $new_instance, $old_instance ) {
 		$instance = $old_instance;
-        $instance['heading'] = wp_filter_post_kses($new_instance['heading']);
-        $instance['subheading'] = wp_filter_post_kses($new_instance['subheading']);
-		$instance['content'] = wp_filter_post_kses($new_instance['content']);
-        $instance['buttontext'] = wp_filter_post_kses($new_instance['buttontext']);
+        $instance['heading'] = wp_kses_post($new_instance['heading']);
+        $instance['subheading'] = wp_kses_post($new_instance['subheading']);
+		$instance['content'] = wp_kses_post($new_instance['content']);
+        $instance['buttontext'] = wp_kses_post($new_instance['buttontext']);
         $instance['buttonurl'] = esc_url($new_instance['buttonurl']);
         $instance['image']  = strip_tags( $new_instance['image'] );
-        $instance['image_desc']   = wp_filter_post_kses($new_instance['image_desc']);
+        $instance['image_desc']   = wp_kses_post($new_instance['image_desc']);
         $instance['color'] = sanitize_hex_color($new_instance['color']);
         $instance['headingcolor'] = sanitize_hex_color($new_instance['headingcolor']);
         $instance['subheadingcolor'] = sanitize_hex_color($new_instance['subheadingcolor']);

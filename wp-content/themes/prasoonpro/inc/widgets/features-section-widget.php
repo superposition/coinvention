@@ -270,14 +270,14 @@ class Prasoon_Features_Section_Widget extends WP_Widget {
 	 */
 	public function update( $new_instance, $old_instance ) {
 		$instance = $old_instance;
-        $instance['heading'] = wp_filter_post_kses($new_instance['heading']);
-        $instance['subheading'] = wp_filter_post_kses($new_instance['subheading']);		
+        $instance['heading'] = wp_kses_post($new_instance['heading']);
+        $instance['subheading'] = wp_kses_post($new_instance['subheading']);		
         $instance['image']  = strip_tags( $new_instance['image'] );        
         $instance['color'] = sanitize_hex_color($new_instance['color']);
 
         for( $i=1; $i<7; $i++ ) {          
-            $instance['fheading'.$i] = wp_filter_post_kses($new_instance['fheading'.$i]);
-            $instance['fsubheading'.$i] = wp_filter_post_kses($new_instance['fsubheading'.$i]);
+            $instance['fheading'.$i] = wp_kses_post($new_instance['fheading'.$i]);
+            $instance['fsubheading'.$i] = wp_kses_post($new_instance['fsubheading'.$i]);
         }
 
         $instance['headingcolor'] = sanitize_hex_color($new_instance['headingcolor']);

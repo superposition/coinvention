@@ -171,9 +171,9 @@ class Prasoon_CTA_Section_Widget extends WP_Widget {
 	public function update( $new_instance, $old_instance ) {
 		$instance = $old_instance;
 
-		$instance[ 'heading'] = wp_filter_post_kses( $new_instance['heading'] );
-        $instance[ 'subheading'] = wp_filter_post_kses( $new_instance['subheading'] );
-        $instance[ 'button_text'] = wp_filter_post_kses( $new_instance['button_text'] );
+		$instance[ 'heading'] = wp_kses_post( $new_instance['heading'] );
+        $instance[ 'subheading'] = wp_kses_post( $new_instance['subheading'] );
+        $instance[ 'button_text'] = wp_kses_post( $new_instance['button_text'] );
         $instance[ 'button_url'] = esc_url( $new_instance['button_url'] );
 		$instance['image']  = strip_tags( $new_instance['image'] );    	
     	$instance['radio_buttons'] = wp_filter_post_kses($new_instance['radio_buttons']);

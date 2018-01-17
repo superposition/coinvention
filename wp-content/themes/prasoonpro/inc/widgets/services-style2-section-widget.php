@@ -281,15 +281,15 @@ class Prasoon_Services_Style2_Section_Widget extends WP_Widget {
 	public function update( $new_instance, $old_instance ) {
 		$instance = $old_instance;
         $instance[ 'rowsnumber'] = absint( $new_instance['rowsnumber'] );
-        $instance[ 'heading'] = wp_filter_post_kses( $new_instance['heading'] );
-        $instance[ 'subheading'] = wp_filter_post_kses( $new_instance['subheading'] );
+        $instance[ 'heading'] = wp_kses_post( $new_instance['heading'] );
+        $instance[ 'subheading'] = wp_kses_post( $new_instance['subheading'] );
         $instance['color'] = sanitize_hex_color($new_instance['color']);
 
         for( $i=1; $i<=4*$instance[ 'rowsnumber']; $i++ ) {
             $instance[ 'font_icon'.$i ] = strip_tags( $new_instance[ 'font_icon'.$i ] );
-            $instance[ 'title'.$i ] = wp_filter_post_kses($new_instance['title'.$i]);
-            $instance[ 'content'.$i ] = wp_filter_post_kses($new_instance['content'.$i]);
-            $instance[ 'button_text'.$i ] = wp_filter_post_kses($new_instance['button_text'.$i]);
+            $instance[ 'title'.$i ] = wp_kses_post($new_instance['title'.$i]);
+            $instance[ 'content'.$i ] = wp_kses_post($new_instance['content'.$i]);
+            $instance[ 'button_text'.$i ] = wp_kses_post($new_instance['button_text'.$i]);
             $instance[ 'button_url'.$i ] = esc_url($new_instance['button_url'.$i]);
         }
 

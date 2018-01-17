@@ -58,7 +58,7 @@ function prasoonpro_customize_register( $wp_customize ) {
         'home_heading_text',
         array(            
             'default'           => 'ENTER YOUR HEADING HERE',
-            'sanitize_callback' => 'prasoonpro_sanitize_html',
+            'sanitize_callback' => 'wp_kses_post',
             'transport' => 'postMessage',
         )
     );
@@ -86,7 +86,7 @@ function prasoonpro_customize_register( $wp_customize ) {
         'home_subheading_text',
         array(            
             'default'           => 'ENTER YOUR SUBHEADING HERE',
-            'sanitize_callback' => 'prasoonpro_sanitize_html',
+            'sanitize_callback' => 'wp_kses_post',
             'transport' => 'postMessage',
         )
     );
@@ -980,7 +980,7 @@ function prasoonpro_customize_register( $wp_customize ) {
         array(
             'type' => 'theme_mod',
             'default'           => sprintf( __( 'Copyright %s. All rights reserved.', 'prasoonpro' ), wp_filter_post_kses( get_bloginfo( 'name' ) ) ),
-            'sanitize_callback' => 'prasoonpro_sanitize_html'
+            'sanitize_callback' => 'wp_kses_post'
         )
     );
 
@@ -1099,6 +1099,7 @@ function prasoonpro_customize_register( $wp_customize ) {
       )
     );
 
+    
     /* Documentation */
     $wp_customize->add_section(
         'prasoonpro_doc_settings',
@@ -1296,6 +1297,19 @@ function prasoonpro_sanitize_select( $input, $setting ) {
     return ( array_key_exists( $input, $choices ) ? $input : $setting->default );
 }
 endif;
+
+/**
+ * Sanitize checkbox option buttons
+ *
+ * @param string $input
+ * @return bool
+ */
+if ( ! function_exists( 'prasoonpro_sanitize_checkbox_selection' ) ) :
+function prasoonpro_sanitize_checkbox_selection( $input ) {
+    return ( ( isset( $input ) && true == $input ) ? true : false );
+}
+endif;
+
 
 /**
  * Sanitize textarea.
